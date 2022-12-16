@@ -163,9 +163,9 @@ func WithProcessKill(ctx context.Context, p Process) error {
 	// ignore errors to wait and kill as we are forcefully killing
 	// the process and don't care about the exit status
 	s, err := p.Wait(ctx)
-	if err != nil {
-		return err
-	}
+	// if err != nil {
+	// 	return err
+	// }
 	if err := p.Kill(ctx, syscall.SIGKILL, WithKillAll); err != nil {
 		// Kill might still return an IsNotFound error, even if it actually
 		// killed the process.
